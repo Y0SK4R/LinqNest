@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LinkNest — Fast, reliable, self-hosted URL shortener">
+  <title>LinkNest — Self-Hosted URL Shortener</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header" role="banner">
+      <div class="brand-wrapper">
+        <div class="brand-icon" aria-hidden="true">&sect;</div>
+        <div>
+          <h1 class="brand-title">LinkNest</h1>
+        </div>
+        <span class="brand-badge">Self-Hosted</span>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle light or dark theme" title="Toggle theme">
+          <span aria-hidden="true">&#9681;</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main role="main">
+      <!-- Shorten URL Card -->
+      <section class="card" aria-labelledby="shorten-title">
+        <h2 id="shorten-title" class="card-title">Shorten a new link</h2>
+        <p class="card-description">Create clean, trackable short URLs with real-time collision prevention and security checks.</p>
+
+        <form id="create-form" class="create-form" novalidate>
+          <!-- Destination URL Input -->
+          <div class="input-group">
+            <label for="url-input" class="input-label">
+              Destination URL
+              <span class="input-hint" aria-hidden="true">HTTP or HTTPS only</span>
+            </label>
+            <input
+              type="url"
+              id="url-input"
+              class="input-control"
+              placeholder="https://example.com/your-lengthy-target-page"
+              required
+              autocomplete="off"
+              aria-required="true"
+              aria-describedby="url-error"
+            />
+            <div id="url-error" class="input-error-msg" role="alert" aria-live="polite"></div>
+          </div>
+
+          <!-- Secondary Options Grid -->
+          <div class="form-row">
+            <div class="input-group">
+              <label for="code-input" class="input-label">
+                Custom Alias
+                <span class="input-optional">Optional (3-16 chars)</span>
+              </label>
+              <input
+                type="text"
+                id="code-input"
+                class="input-control"
+                placeholder="my-custom-slug"
+                maxlength="16"
+                autocomplete="off"
+                aria-describedby="code-error"
+              />
+              <div id="code-error" class="input-error-msg" role="alert" aria-live="polite"></div>
+            </div>
+
+            <div class="input-group">
+              <label for="title-input" class="input-label">
+                Link Title
+                <span class="input-optional">Optional description</span>
+              </label>
+              <input
+                type="text"
+                id="title-input"
+                class="input-control"
+                placeholder="Product launch campaign"
+                maxlength="255"
+                autocomplete="off"
+              />
+              <div class="input-error-msg"></div>
+            </div>
+          </div>
+
+          <!-- Submit Action -->
+          <div class="form-actions">
+            <button type="submit" id="submit-btn" class="btn btn-primary">
+              Shorten Link
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Active Links Section -->
+      <section style="margin-top: 2rem;" aria-labelledby="links-section-title">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2 id="links-section-title" class="section-title">Active Links</h2>
+            <span id="links-count" class="count-badge" aria-label="Total links count">0</span>
+          </div>
+          <button type="button" id="refresh-btn" class="btn btn-secondary" aria-label="Refresh links list">
+            <span aria-hidden="true">&#8635;</span> Refresh
+          </button>
+        </div>
+
+        <div id="links-container">
+          <!-- Dynamically populated by app.js -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer" role="contentinfo">
+      <p>LinkNest &bull; Open-source, self-hosted URL shortener &bull; Milestone 1</p>
+    </footer>
+  </div>
+
+  <!-- Toast Notification Container (ARIA live region) -->
+  <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Scripts -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

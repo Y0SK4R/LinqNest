@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# Databases
+*.db
+*.sqlite3
+*.sqlite
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OpenMausBot Workspace specific
+MEMORY.md
+memory/
+.openmausbot/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.env
